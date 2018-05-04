@@ -8,9 +8,10 @@ RUN apt-get install -y wget unzip python-virtualenv git build-essential software
 RUN add-apt-repository -y ppa:ethereum/ethereum-dev
 RUN add-apt-repository -y ppa:ethereum/ethereum
 RUN apt-get update
+RUN apt-cache madison solc
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get install -y build-essential solc ethereum python3 python-pip pandoc python3-pip \
+RUN apt-get install -y build-essential solc=1:0.4.23-0ubuntu1* ethereum python3 python-pip pandoc python3-pip \
     libssl-dev libcurl4-openssl-dev libffi-dev nodejs npm
 RUN apt-get clean
 RUN pip3 install requests web3 mythril
